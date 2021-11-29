@@ -207,7 +207,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>$ {tickersData?.quotes.USD.price}</span>
+              <span>$ {tickersData?.quotes.USD.price.toFixed(2)}</span>
             </OverviewItem>
           </Overview>
           <Description>{infoData?.description}</Description>
@@ -223,11 +223,11 @@ function Coin() {
           </Overview>
 
           <Tabs>
-            <Tab isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>Chart</Link>
-            </Tab>
             <Tab isActive={priceMatch !== null}>
               <Link to={`/${coinId}/price`}>Price</Link>
+            </Tab>
+            <Tab isActive={chartMatch !== null}>
+              <Link to={`/${coinId}/chart`}>Chart</Link>
             </Tab>
           </Tabs>
 
