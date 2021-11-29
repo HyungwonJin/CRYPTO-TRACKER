@@ -14,6 +14,7 @@ import Chart from "./Chart";
 import Price from "./Price";
 
 const Title = styled.h1`
+  font-size: 35px;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -233,7 +234,7 @@ function Coin() {
 
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price />
+              <Price tickersData={tickersData} />
             </Route>
             <Route path={`/:coinId/chart`}>
               <Chart coinId={coinId} />
