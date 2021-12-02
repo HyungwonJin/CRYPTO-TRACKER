@@ -62,11 +62,9 @@ interface ICoin {
   type: string;
 }
 
-interface ICoinsPorps {
-  toggleDark: () => void;
-}
+interface ICoinsPorps {}
 
-function Coins({ toggleDark }: ICoinsPorps) {
+function Coins({}: ICoinsPorps) {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
   /* const [coins, setCoins] = useState<ICoin[]>([]);
   const [loading, setLoading] = useState(true);
@@ -85,7 +83,6 @@ function Coins({ toggleDark }: ICoinsPorps) {
       </Helmet>
       <Header>
         <Title>코인</Title>
-        <button onClick={toggleDark}>Toggle Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
