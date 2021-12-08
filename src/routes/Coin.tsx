@@ -16,6 +16,8 @@ import Price from "./Price";
 const Title = styled.h1`
   font-size: 35px;
   color: ${(props) => props.theme.accentColor};
+  justify-self: center;
+  align-self: center;
 `;
 
 const Loader = styled.div`
@@ -31,9 +33,11 @@ const Container = styled.div`
 
 const Header = styled.header`
   height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  div {
+    align-self: center;
+  }
 `;
 
 const Overview = styled.div`
@@ -148,9 +152,7 @@ interface PriceData {
   };
 }
 
-interface ICoinProps {}
-
-function Coin({}: ICoinProps) {
+function Coin() {
   const { coinId } = useParams<RouteParams>();
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -191,6 +193,9 @@ function Coin({}: ICoinProps) {
         </title>
       </Helmet>
       <Header>
+        <div>
+          <Link to="/">&larr; Back</Link>
+        </div>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>

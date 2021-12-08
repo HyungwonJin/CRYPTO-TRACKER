@@ -14,9 +14,12 @@ const Container = styled.div`
 
 const Header = styled.header`
   height: 10vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  div {
+    align-self: center;
+    justify-self: flex-end;
+  }
 `;
 
 const CoinsList = styled.ul``;
@@ -41,7 +44,10 @@ const Coin = styled.li`
 `;
 
 const Title = styled.h1`
+  font-size: 40px;
   color: ${(props) => props.theme.accentColor};
+  justify-self: center;
+  align-self: center;
 `;
 
 const Loader = styled.div`
@@ -65,8 +71,6 @@ interface ICoin {
   type: string;
 }
 
-interface ICoinsPorps {}
-
 function Coins() {
   const setDarkAtom = useSetRecoilState(isDarkAtom);
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
@@ -87,8 +91,11 @@ function Coins() {
         <title>코인</title>
       </Helmet>
       <Header>
+        <div></div>
         <Title>코인</Title>
-        <button onClick={toggleDarkAtom}>Toggle Mode</button>
+        <div>
+          <button onClick={toggleDarkAtom}>Toggle Mode</button>
+        </div>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
